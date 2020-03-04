@@ -1,0 +1,32 @@
+{
+  "name": "react-redux-helper",
+  "version": "1.0.0",
+  "description": "A command line tool that helps to bootstrap react-redux packaged with other amazing features like creating redux types automatically and and watching for changes in the file to update the redux setup of the project ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "setup": "cd tasks && node setup.js"
+  },
+  "keywords": [
+    "redux",
+    "react-redux",
+    "helper",
+    "starter"
+  ],
+  "author": "Gbare Oyekan",
+  "license": "ISC",
+  "dependencies": {
+    "chokidar": "^3.3.1",
+    "eslint": "^6.8.0",
+    "npm": "^6.13.7",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "prettier": "1.19.1"
+  },
+  "bin": {
+    "redux-helper": "./tasks/index.js"
+  }
+}
