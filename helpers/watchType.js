@@ -5,7 +5,7 @@ var prettier = require("prettier");
 
 async function watchType(filepath) {
     try {
-        filepath = path.join("..", filepath)
+        filepath = path.join(filepath)
         var changedFile = await readFile(filepath);
         var typeRegex = /NT\s+[a-zA-z]+\s+/
         var matched = changedFile.match(typeRegex);
@@ -32,7 +32,7 @@ function getType(typeCode) {
 
 async function processType(filepath, typeCode) {
     let fileName = path.basename(filepath);
-    let typesPath = path.join("..", "actions", "types", fileName);
+    let typesPath = path.join("actions", "types", fileName);
     let typesFile = await readFile(typesPath);
      typesFile = prettier.format(typesFile);
     if (typesFile.length) {

@@ -3,7 +3,7 @@ var path = require("path");
 
 
 async function bootstrapAction(filepath) {
-    filepath = path.join("..", filepath);
+    filepath = path.join(filepath);
     actionTemplate = `import * as types from "./types" \n \n export const TypeName = () => {
 }`
     let fileContent = await fs.readFile(filepath, (err, data) => {

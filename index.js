@@ -18,19 +18,10 @@ if (window.location.hostname !== "localhost") {
 const rootElement = document.getElementById("root")
 if (rootElement.hasChildNodes()) {
   hydrate(
-    <Provider store={store}>
-      <Provider store={store}>
-        <Provider store={store}>
-          <Provider store={store}>
-            <Provider store={store}>
+    
               <Provider store={store}>
                 <App />
-              </Provider>
-            </Provider>
-          </Provider>
-        </Provider>
-      </Provider>
-    </Provider>,
+              </Provider>,
     rootElement
   )
 } else {

@@ -26,7 +26,7 @@ function syncFiles(filepath) {
 function createFiles(filetypes, filename) {
     console.log("writing files");
     filetypes.forEach(type => {
-        var dir = path.join("..", type, filename);
+        var dir = path.join(type, filename);
         if (dir.includes("index.js")) return;
         fs.appendFile(dir, "", (err, res) => {
             if (err) {

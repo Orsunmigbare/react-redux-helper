@@ -3,7 +3,7 @@ var path = require("path");
 var reducerTemplate = require("../templates/reducerTemplate");
 
 async function bootstrapReducer(filepath) {
-    filepath = path.join("..", filepath);
+    filepath = path.join( filepath);
     let fileContent = await fs.readFile(filepath, (err, data) => {
         if (filepath.includes("/index.js") || data.toString().trim()) return
         fs.writeFile(filepath, reducerTemplate, (err, data) => {

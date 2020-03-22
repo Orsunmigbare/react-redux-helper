@@ -1,2 +1,0 @@
-types.ALLOW_ME
-types.SHOW_MORE_LOVE

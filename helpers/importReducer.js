@@ -6,8 +6,8 @@ var prettier = require("prettier");
 async function importReducer(filepath) {
     if (filepath.includes("index.js")) return
     let filename = path.basename(filepath);
-    let indexPath = path.join("..", 'reducers', "index.js");
-    filepath = path.join("..", 'actions', 'types', filename);
+    let indexPath = path.join('reducers', "index.js");
+    filepath = path.join('actions', 'types', filename);
     let typeIndexContent = prettier.format(await readFile(indexPath), { parser: "babel" });
 
     if (typeIndexContent.includes(`./${filename.replace(".js", "")}`)) {
@@ -21,7 +21,8 @@ async function importReducer(filepath) {
     typeIndex = typeIndexContent.split("");
     console.log("typeindex conetnt -------->", typeIndex.join(""))
     console.log("next index of }", typeIndexContent.indexOf('}', typeIndexContent.indexOf("combineReducers({")));
-    typeIndex.splice(typeIndexContent.indexOf('}', typeIndexContent.indexOf("combineReducers({")), 0, typeIndexContent[typeIndexContent.indexOf("combineReducers({") + 1 ] === "}" ? filename.replace(".js", "") : "," + filename.replace(".js", ""))
+    console.log("item after combine reducers")
+    typeIndex.splice(typeIndexContent.indexOf('}', typeIndexContent.indexOf("combineReducers({")), 0, typeIndexContent[typeIndexContent.indexOf("combineReducers({") + 17] === "}" ? filename.replace(".js", "") : "," + filename.replace(".js", ""))
     typeIndexContent = typeIndex.join("");
 
     console.log("typeIndex", typeIndex.join(""))
