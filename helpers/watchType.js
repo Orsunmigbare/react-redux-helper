@@ -34,7 +34,7 @@ async function processType(filepath, typeCode) {
     let fileName = path.basename(filepath);
     let typesPath = path.join("actions", "types", fileName);
     let typesFile = await readFile(typesPath);
-     typesFile = prettier.format(typesFile);
+    typesFile = prettier.format(typesFile, { semi: false, parser: "babel" });
     if (typesFile.length) {
         typesFile = typesFile + `\n export const ${typeCode.type} = "${typeCode.type}"`
         console.log("typesfile", typesFile)
@@ -42,7 +42,7 @@ async function processType(filepath, typeCode) {
         typesFile = `export const ${typeCode.type} = "${typeCode.type}"`
     }
 
-    fs.writeFileSync(typesPath, prettier.format(typesFile));
+    fs.writeFileSync(typesPath, prettier.format(typesFile, { semi: false, parser: "babel" }));
 
     let fileContent = await readFile(filepath)
     fileContent = fileContent.replace(typeCode.typeCode, `types.${typeCode.type}`);
