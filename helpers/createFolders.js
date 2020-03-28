@@ -12,14 +12,14 @@ function createFolders() {
                 new Promise((resolve, reject) => {
                     fs.mkdir(dir, (err, res) => {
                         if (err) {
-                            console.log("err", err);
+                            // console.log("err", err);
                             reject(err)
                             return
                         }
                         if (dir === path.join(".", "actions")) {
                             fs.mkdir(path.join(".", "actions", "types"), (err, res) => {
                                 if (err) {
-                                    console.log(err);
+                                    // console.log(err);
                                     return;
                                 }
                                 resolve(res);

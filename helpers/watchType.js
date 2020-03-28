@@ -7,15 +7,15 @@ async function watchType(filepath) {
     try {
         filepath = path.join(filepath)
         var changedFile = await readFile(filepath);
-        var typeRegex = /NT\s+[a-zA-z]+\s+/
+        var typeRegex = /!NT\s+[a-zA-z]+\s+/
         var matched = changedFile.match(typeRegex);
-        console.log('matched --->', matched)
+        // console.log('matched --->', matched);
         if (matched) {
-            console.log("matched ----->")
+            // console.log("matched ----->")
             processType(filepath, getType(matched[0]))
         }
     } catch (err) {
-        console.log("err ----->", err)
+        // console.log("err ----->", err)
     }
 }
 
@@ -37,7 +37,7 @@ async function processType(filepath, typeCode) {
     typesFile = prettier.format(typesFile, { semi: false, parser: "babel" });
     if (typesFile.length) {
         typesFile = typesFile + `\n export const ${typeCode.type} = "${typeCode.type}"`
-        console.log("typesfile", typesFile)
+        // console.log("typesfile", typesFile);
     } else {
         typesFile = `export const ${typeCode.type} = "${typeCode.type}"`
     }
@@ -46,7 +46,7 @@ async function processType(filepath, typeCode) {
 
     let fileContent = await readFile(filepath)
     fileContent = fileContent.replace(typeCode.typeCode, `types.${typeCode.type}`);
-    console.log("file content ------->", fileContent)
+    // console.log("file content ------->", fileContent)
     fs.writeFileSync(filepath, fileContent);
 
 

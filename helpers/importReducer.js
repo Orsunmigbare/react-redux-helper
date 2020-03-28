@@ -11,7 +11,6 @@ async function importReducer(filepath) {
     let typeIndexContent = prettier.format(await readFile(indexPath), { parser: "babel" });
 
     if (typeIndexContent.includes(`./${filename.replace(".js", "")}`)) {
-        console.log("index exports file already");
         return
     }
     let fileImport = `\n import ${filename.replace(".js", "")} from "./${filename.replace('.js', '')}"`;
@@ -19,17 +18,13 @@ async function importReducer(filepath) {
     typeIndex.splice(typeIndexContent.indexOf(';', typeIndexContent.lastIndexOf("import")), 0, fileImport);
     typeIndexContent = typeIndex.join("");
     typeIndex = typeIndexContent.split("");
-    console.log("typeindex conetnt -------->", typeIndex.join(""))
-    console.log("next index of }", typeIndexContent.indexOf('}', typeIndexContent.indexOf("combineReducers({")));
-    console.log("item after combine reducers")
     typeIndex.splice(typeIndexContent.indexOf('}', typeIndexContent.indexOf("combineReducers({")), 0, typeIndexContent[typeIndexContent.indexOf("combineReducers({") + 17] === "}" ? filename.replace(".js", "") : "," + filename.replace(".js", ""))
     typeIndexContent = typeIndex.join("");
 
-    console.log("typeIndex", typeIndex.join(""))
 
     fs.writeFile(indexPath, prettier.format(typeIndexContent, { parser: "babel" }), (err, res) => {
         if (err) {
-            console.log('err --->', err);
+            // console.log('err --->', err);
             return;
         };
 

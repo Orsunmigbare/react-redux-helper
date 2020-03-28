@@ -8,9 +8,9 @@ async function bootstrapReducer(filepath) {
         if (filepath.includes("/index.js") || data.toString().trim()) return
         fs.writeFile(filepath, reducerTemplate, (err, data) => {
             if (err) {
-                console.log("err")
+                // console.log("err")
             }
-            console.log("succesfully written files")
+            // console.log("succesfully written files")
         })
     });
 

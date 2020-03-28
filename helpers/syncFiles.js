@@ -6,7 +6,7 @@ function syncFiles(filepath) {
     let filename = path.basename(filepath)
     let dir = path.dirname(filepath);
     // renameFile(filepath)
-    console.log("dir ->", dir)
+    // console.log("dir ->", dir)
     switch (dir) {
         case "actions/types":
             createFiles(["reducers", 'actions'], filename)
@@ -24,7 +24,7 @@ function syncFiles(filepath) {
 }
 
 function createFiles(filetypes, filename) {
-    console.log("writing files");
+    // console.log("writing files");
     filetypes.forEach(type => {
         var dir = path.join(type, filename);
         if (dir.includes("index.js")) return;
